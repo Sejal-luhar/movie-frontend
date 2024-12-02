@@ -39,7 +39,7 @@ const Movies = () => {
               onClick={() => handleCardClick(movie.id)}
             >
               <img
-                src={`${import.meta.env.VITE_REACT_APP_APIURL}${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
                 className="w-full h-80 object-cover"
               />
