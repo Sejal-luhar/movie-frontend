@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import scrollbar from 'tailwind-scrollbar'; // Use ES module import
+
 export default {
   content: [
     "./index.html",
