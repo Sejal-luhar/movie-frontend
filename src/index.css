@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Custom Scrollbar Animation */
+@keyframes smooth-scroll {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Apply the animation */
+  .scrollbar-thumb-red-600 {
+    animation: smooth-scroll 0.5s ease-in-out;
+  }
+  /* Hide the scrollbar track */
+::-webkit-scrollbar {
+    height: 8px; /* Set the height for the horizontal scrollbar */
+    width: 8px;  /* Optional: Set width for vertical scrollbar if needed */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: black; /* Make the track invisible */
+  }
+  
+  /* Style the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: #e53e3e; /* Color of the thumb (e.g., red) */
+    border-radius: 20px; /* Make the thumb rounded */
+    border: 3px solid transparent; /* Optional: Add border around thumb for extra effect */
+  }
+  
+  /* Optional: Hover effect for the thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #c53030; /* Darker red when hovered */
+  }
+  
