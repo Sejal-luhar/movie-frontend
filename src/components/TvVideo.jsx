@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import YouTube from 'react-youtube';
-import Navbar from './Navbar';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import YouTube from "react-youtube";
+import Navbar from "./Navbar";
 
 const TvVideo = () => {
   const { id } = useParams(); // Extract the series ID from the route
@@ -25,16 +25,16 @@ const TvVideo = () => {
         );
 
         const trailer = videosResponse.data.results.find(
-          (video) => video.type === 'Trailer' && video.site === 'YouTube'
+          (video) => video.type === "Trailer" && video.site === "YouTube"
         );
 
         if (trailer) {
           setVideoKey(trailer.key); // Set YouTube video key
         } else {
-          console.warn('No trailer available for this series.');
+          console.warn("No trailer available for this series.");
         }
       } catch (err) {
-        console.error('Failed to fetch TV series details or video:', err);
+        console.error("Failed to fetch TV series details or video:", err);
       }
     };
 
@@ -52,13 +52,15 @@ const TvVideo = () => {
             <YouTube
               videoId={videoKey}
               opts={{
-                height: '480',
-                width: '100%',
+                height: "480",
+                width: "100%",
                 playerVars: { autoplay: 1 },
               }}
             />
           ) : (
-            <p className="text-gray-400">No trailer available for this series.</p>
+            <p className="text-gray-400">
+              No trailer available for this series.
+            </p>
           )}
         </div>
       ) : (

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const OnlyMovies = () => {
   const [popular, setPopular] = useState([]);
@@ -14,7 +14,7 @@ const OnlyMovies = () => {
     const fetchPopularMovies = async () => {
       try {
         const response = await axios.get(
-          'https://api.themoviedb.org/3/movie/popular?api_key=be74b07f6707a2b11399ba580619ac41'
+          "https://api.themoviedb.org/3/movie/popular?api_key=be74b07f6707a2b11399ba580619ac41"
         );
         setPopular(response.data.results);
         setFilteredPopular(response.data.results); // Set initial filtered list
@@ -30,7 +30,7 @@ const OnlyMovies = () => {
     const fetchUpcomingMovies = async () => {
       try {
         const response = await axios.get(
-          'https://api.themoviedb.org/3/movie/upcoming?api_key=be74b07f6707a2b11399ba580619ac41'
+          "https://api.themoviedb.org/3/movie/upcoming?api_key=be74b07f6707a2b11399ba580619ac41"
         );
         setUpcoming(response.data.results);
         setFilteredUpcoming(response.data.results); // Set initial filtered list
@@ -43,16 +43,20 @@ const OnlyMovies = () => {
   }, []);
 
   const handleSearch = (searchTerm) => {
-    if (searchTerm.trim() === '') {
+    if (searchTerm.trim() === "") {
       setFilteredPopular(popular);
       setFilteredUpcoming(upcoming);
     } else {
       const searchLower = searchTerm.toLowerCase();
       setFilteredPopular(
-        popular.filter((movie) => movie.title.toLowerCase().includes(searchLower))
+        popular.filter((movie) =>
+          movie.title.toLowerCase().includes(searchLower)
+        )
       );
       setFilteredUpcoming(
-        upcoming.filter((movie) => movie.title.toLowerCase().includes(searchLower))
+        upcoming.filter((movie) =>
+          movie.title.toLowerCase().includes(searchLower)
+        )
       );
     }
   };
@@ -90,7 +94,9 @@ const OnlyMovies = () => {
 
           {/* Upcoming Movies Section */}
           <div>
-            <h2 className="text-2xl text-yellow-100 font-bold mb-4">Upcoming</h2>
+            <h2 className="text-2xl text-yellow-100 font-bold mb-4">
+              Upcoming
+            </h2>
             <div className="flex overflow-x-auto overflow-y-hidden space-x-4">
               {filteredUpcoming.map((movie) => (
                 <div

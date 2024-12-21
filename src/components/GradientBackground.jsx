@@ -1,5 +1,5 @@
-import React from 'react';
-import './GradientBackground.css'; // Import CSS for gradient and animations
+import React from "react";
+import "./GradientBackground.css"; // Import CSS for gradient and animations
 
 const GradientBackground = ({ children }) => {
   return (

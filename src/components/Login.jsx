@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import api from '../utils/axios';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../utils/axios";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false); // State to track loading status
   const navigate = useNavigate();
 
@@ -12,13 +12,13 @@ const Login = () => {
     e.preventDefault();
     setLoading(true); // Set loading to true when the login request starts
     try {
-      const response = await api.post('/auth/login', { email, password });
+      const response = await api.post("/auth/login", { email, password });
       alert(response.data.message); // Show success message
-      localStorage.setItem('authToken', response.data.token);
+      localStorage.setItem("authToken", response.data.token);
 
-      navigate('/movies'); // Redirect to movies page
+      navigate("/movies"); // Redirect to movies page
     } catch (error) {
-      alert('Login failed! Please check your credentials.');
+      alert("Login failed! Please check your credentials.");
     } finally {
       setLoading(false); // Reset loading state after the request
     }
@@ -69,12 +69,12 @@ const Login = () => {
                 Loading...
               </span>
             ) : (
-              'Login'
+              "Login"
             )}
           </button>
         </form>
         <p className="text-center mt-4">
-          New to the app?{' '}
+          New to the app?{" "}
           <Link to="/signup" className="text-red-600 underline">
             Create an account
           </Link>

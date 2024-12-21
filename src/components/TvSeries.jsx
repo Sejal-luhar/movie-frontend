@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const TvSeries = () => {
   const [tvData, setTvData] = useState({
@@ -12,12 +12,12 @@ const TvSeries = () => {
   });
   const [filteredData, setFilteredData] = useState({});
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();  // Add the navigate hook
+  const navigate = useNavigate(); // Add the navigate hook
 
   useEffect(() => {
     const fetchTvData = async () => {
       try {
-        const apiKey = 'be74b07f6707a2b11399ba580619ac41';
+        const apiKey = "be74b07f6707a2b11399ba580619ac41";
         const endpoints = {
           airingToday: `https://api.themoviedb.org/3/tv/airing_today?api_key=${apiKey}`,
           topRated: `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`,
@@ -39,7 +39,7 @@ const TvSeries = () => {
         setTvData(data);
         setFilteredData(data);
       } catch (error) {
-        console.error('Error fetching TV series data:', error);
+        console.error("Error fetching TV series data:", error);
       } finally {
         setLoading(false);
       }
@@ -49,12 +49,12 @@ const TvSeries = () => {
   }, []);
 
   const handleSearch = (searchTerm) => {
-    if (searchTerm.trim() === '') {
+    if (searchTerm.trim() === "") {
       setFilteredData(tvData);
     } else {
       const filterCategory = (category) =>
         category.filter((item) =>
-          (item.name || '').toLowerCase().includes(searchTerm.toLowerCase())
+          (item.name || "").toLowerCase().includes(searchTerm.toLowerCase())
         );
 
       setFilteredData({
@@ -80,11 +80,11 @@ const TvSeries = () => {
             <div
               key={item.id}
               className="bg-gray-800 flex-shrink-0 w-60 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transform transition"
-              onClick={() => handleCardClick(item.id)}  // Add the onClick event
+              onClick={() => handleCardClick(item.id)} // Add the onClick event
             >
               <img
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                alt={item.name || 'No Title'}
+                alt={item.name || "No Title"}
                 className="w-full h-80 object-cover"
               />
             </div>

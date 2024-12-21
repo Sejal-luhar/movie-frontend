@@ -1,51 +1,50 @@
 .gradient-background {
-    position: relative;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #1e3a8a, #6b21a8);
-    overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3a8a, #6b21a8);
+  overflow: hidden;
+}
+
+.shapes-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.shapes-animation::before,
+.shapes-animation::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: move 8s infinite linear;
+}
+
+.shapes-animation::before {
+  top: -150px;
+  left: -150px;
+}
+
+.shapes-animation::after {
+  bottom: -150px;
+  right: -150px;
+  animation-delay: 4s;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
   }
-  
-  .shapes-animation {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
+  50% {
+    transform: translateY(50px) translateX(-50px) scale(1.2);
   }
-  
-  .shapes-animation::before,
-  .shapes-animation::after {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: move 8s infinite linear;
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
   }
-  
-  .shapes-animation::before {
-    top: -150px;
-    left: -150px;
-  }
-  
-  .shapes-animation::after {
-    bottom: -150px;
-    right: -150px;
-    animation-delay: 4s;
-  }
-  
-  @keyframes move {
-    0% {
-      transform: translateY(0) translateX(0) scale(1);
-    }
-    50% {
-      transform: translateY(50px) translateX(-50px) scale(1.2);
-    }
-    100% {
-      transform: translateY(0) translateX(0) scale(1);
-    }
-  }
-  
+}

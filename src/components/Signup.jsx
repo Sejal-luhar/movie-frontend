@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import api from '../utils/axios';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../utils/axios";
 
 const Signup = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post('/auth/signup', { email, password });
+      const response = await api.post("/auth/signup", { email, password });
       alert(response.data.message); // Show success message
-      navigate('/login'); // Redirect to login page
+      navigate("/login"); // Redirect to login page
     } catch (error) {
-      alert('Signup failed! Please try again.');
+      alert("Signup failed! Please try again.");
     }
   };
 
@@ -39,10 +39,12 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button className="w-full bg-red-600 text-white my-4 px-4 py-3 rounded-3xl">Sign Up</button>
+          <button className="w-full bg-red-600 text-white my-4 px-4 py-3 rounded-3xl">
+            Sign Up
+          </button>
         </form>
         <p className="text-center mt-4">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link to="/login" className="text-red-600 underline">
             Sign In
           </Link>
